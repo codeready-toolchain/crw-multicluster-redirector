@@ -172,7 +172,7 @@ function updateSignupState() {
         } else if (data && data.status.verificationRequired) {
             hideAll();
             show("verify-account-text");
-            redirect('https://developers.redhat.com/developer-sandbox#assembly-field-sections-59571');
+            redirect('https://developers.redhat.com/developer-sandbox/ide');
         } else {
             showError("Failed to load data from the Developer Sandbox Registration service");
         }
@@ -180,7 +180,7 @@ function updateSignupState() {
         if (err === 404) {
             console.log('error 404 - User has not been regestred in the Developer Sandbox. Redirecting to the landing...');
             show("register-developer-sandbox-text");
-            redirect('https://developers.redhat.com/developer-sandbox#assembly-field-sections-59571');
+            redirect('https://developers.redhat.com/developer-sandbox/ide');
         } else if (err === 401) {
             console.log('error 401');
             showError(err);
