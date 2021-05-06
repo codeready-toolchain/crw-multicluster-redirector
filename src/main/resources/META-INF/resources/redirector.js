@@ -12,10 +12,12 @@
 const origin = window.location.origin;
 const path = window.location.pathname;
 const query = window.location.search;
+const hash = window.location.hash;
 
 console.log("Origin: ", origin);
 console.log("Path: ", path);
 console.log("Query: ", query);
+console.log("Hash: ", hash);
 
 // Link to the Developer Sandbox Registration Service which we store in the 'application.properties' / 'developer.sandbox.registration-service.url'.
 const registrationServiceURL = origin + '/config'
@@ -97,13 +99,13 @@ function redirect(url) {
     }, 3000);
 }
 
-// Generates the redirect URL to the right CRW instance with path and query parameteres
+// Generates the redirect URL to the right CRW instance with path, query and hash parameteres
 function generateRedirectUrlFromSignupData(data) {
     let dashboardURL = data.cheDashboardURL;
     if (dashboardURL.endsWith("/")) {
         dashboardURL = dashboardURL.slice(0, -1);
     }
-    return dashboardURL + path + query;
+    return dashboardURL + path + query + hash;
 }
 
 // Gets the signup state
