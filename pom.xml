@@ -13,7 +13,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.developer.sandbox</groupId>
   <artifactId>crw-multicluster-redirector</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <maven.compiler.parameters>true</maven.compiler.parameters>
