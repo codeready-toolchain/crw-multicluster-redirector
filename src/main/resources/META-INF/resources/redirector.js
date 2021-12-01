@@ -102,6 +102,9 @@ function redirect(url) {
 // Generates the redirect URL to the right CRW instance with path, query and hash parameteres
 function generateRedirectUrlFromSignupData(data) {
     let dashboardURL = data.cheDashboardURL;
+    if (dashboardURL.endsWith("//")) {
+        dashboardURL = dashboardURL.slice(0, -2);
+    }
     if (dashboardURL.endsWith("/")) {
         dashboardURL = dashboardURL.slice(0, -1);
     }
