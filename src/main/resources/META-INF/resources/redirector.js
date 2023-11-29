@@ -211,24 +211,24 @@ function loadDataFromRegistrationService(registrationServiceBaseURL) {
                 console.log('client library load success!')
                 var clientConfig = JSON.parse(data['auth-client-config']);
                 console.log('using client configuration: ' + JSON.stringify(clientConfig))
-                keycloak = Keycloak(clientConfig);
+                keycloak = new Keycloak(clientConfig);
                 keycloak.init({
                     onLoad: 'check-sso',
                     silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
-                }).success(function(authenticated) {
+                }).then(function(authenticated) {
                     if (authenticated == true) {
                         console.log('user is authenticated');
                         // start 15s interval token refresh.
                         intervalRefRefresh = setInterval(refreshToken, 15000);
                         keycloak.loadUserInfo()
-                            .success(function(data) {
+                            .then(function(data) {
                                 console.log('retrieved user info..');
                                 idToken = keycloak.idToken;
                                 // showUser(data.preferred_username)
                                 // now check the signup state of the user.
                                 updateSignupState();
                             })
-                            .error(function() {
+                            .catch(function() {
                                 console.log('Failed to pull in user data');
                                 showError('Failed to pull in user data.');
                             });
@@ -238,7 +238,7 @@ function loadDataFromRegistrationService(registrationServiceBaseURL) {
                             login(); // Initiating the login process after 3 seconds
                         }, 3000);
                     }
-                }).error(function() {
+                }).catch(function() {
                     console.log('Failed to initialize authorization');
                     showError('Failed to initialize authorization.');
                 });
