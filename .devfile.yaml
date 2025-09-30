@@ -10,9 +10,6 @@ components:
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
-      volumeMounts:
-        - name: m2
-          path: /home/user/.m2
       memoryLimit: 6G
       memoryRequest: 512Mi
       cpuRequest: 1000m
