@@ -1,3 +1,5 @@
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://workspaces.openshift.com#https://github.com/codeready-toolchain/crw-multicluster-redirector/)
+
 # crw-multicluster-redirector project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
