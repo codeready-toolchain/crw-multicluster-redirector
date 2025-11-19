@@ -1,4 +1,5 @@
 [![Contribute](https://www.eclipse.org/che/contribute.svg)](https://workspaces.openshift.com#https://github.com/codeready-toolchain/crw-multicluster-redirector/)
+[![Repository on Quay](https://quay.io/repository/redhat-developer/crw-multicluster-redirector/status "Docker Repository on Quay")](https://quay.io/repository/redhat-developer/crw-multicluster-redirector)
 
 # crw-multicluster-redirector project
 
