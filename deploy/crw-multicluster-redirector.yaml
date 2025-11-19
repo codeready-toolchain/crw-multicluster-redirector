@@ -119,6 +119,6 @@ objects:
     wildcardPolicy: None
 parameters:
 - name: IMAGE
-  value: quay.io/ibuziuk/crw-multicluster-redirector
+  value: quay.io/redhat-developer/crw-multicluster-redirector
 - name: IMAGE_TAG
   value: '0.0.1'
