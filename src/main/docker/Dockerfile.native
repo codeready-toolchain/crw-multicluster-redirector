@@ -13,14 +13,12 @@
 #
 # docker run -i --rm -p 8080:8080 quarkus/crw-multicluster-redirector
 #
-# The `registry.access.redhat.com/ubi9/ubi-minimal:9.7` base image is based on UBI 9.
+# The quarkus micro image is based on UBI 9 Micro and contains only the libraries
+# required to run a native executable, minimizing the container attack surface.
 ###
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.7
+FROM quay.io/quarkus/ubi9-quarkus-micro-image:2.0
 WORKDIR /work/
-RUN chown 1001 /work \
-    && chmod "g+rwX" /work \
-    && chown 1001:root /work
-COPY --chown=1001:root --chmod=0755 target/*-runner /work/application
+COPY --chmod=0755 target/*-runner /work/application
 
 EXPOSE 8080
 USER 1001
