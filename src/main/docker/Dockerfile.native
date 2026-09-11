@@ -13,14 +13,29 @@
 #
 # docker run -i --rm -p 8080:8080 quarkus/crw-multicluster-redirector
 #
-# The quarkus micro image is based on UBI 9 Micro and contains only the libraries
-# required to run a native executable, minimizing the container attack surface.
+# Uses a multi-stage build to copy only the glibc runtime libraries required by the
+# native executable into a scratch image, avoiding OS packages such as coreutils that
+# carry unfixed CVEs in the UBI micro base image.
 ###
-FROM quay.io/quarkus/ubi9-quarkus-micro-image:2.0
-WORKDIR /work/
+FROM quay.io/quarkus/ubi9-quarkus-micro-image:2.0 AS libs
+
+FROM scratch
+# Dynamic linker and C runtime
+COPY --from=libs /lib64/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
+COPY --from=libs /lib64/libc.so.6 /lib64/libc.so.6
+COPY --from=libs /lib64/libpthread.so.0 /lib64/libpthread.so.0
+COPY --from=libs /lib64/libdl.so.2 /lib64/libdl.so.2
+COPY --from=libs /lib64/librt.so.1 /lib64/librt.so.1
+COPY --from=libs /lib64/libm.so.6 /lib64/libm.so.6
+COPY --from=libs /lib64/libz.so.1 /lib64/libz.so.1
+# DNS name resolution for outbound HTTP calls
+COPY --from=libs /lib64/libresolv.so.2 /lib64/libresolv.so.2
+COPY --from=libs /lib64/libnss_dns.so.2 /lib64/libnss_dns.so.2
+COPY --from=libs /lib64/libnss_files.so.2 /lib64/libnss_files.so.2
+COPY --from=libs /etc/nsswitch.conf /etc/nsswitch.conf
+COPY --from=libs --chmod=1777 /tmp /tmp
+
 COPY --chmod=0755 target/*-runner /work/application
 
 EXPOSE 8080
-USER 1001
-
-ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0"]
+ENTRYPOINT ["/work/application", "-Dquarkus.http.host=0.0.0.0"]
