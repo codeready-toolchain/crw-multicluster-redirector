@@ -15,3 +15,39 @@ components:
       cpuRequest: 1000m
       cpuLimit: 4000m
       mountSources: true
+commands:
+  - id: compile
+    exec:
+      label: Compile project
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: ./mvnw compile
+      group:
+        kind: build
+        isDefault: true
+  - id: dev
+    exec:
+      label: Run in dev mode
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: ./mvnw compile quarkus:dev
+      group:
+        kind: run
+        isDefault: true
+  - id: test
+    exec:
+      label: Run tests
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: ./mvnw test
+      group:
+        kind: test
+        isDefault: true
+  - id: package
+    exec:
+      label: Package application
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: ./mvnw package
+      group:
+        kind: build
