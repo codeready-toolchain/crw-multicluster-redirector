@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2025 Red Hat, Inc.
+    This program and the accompanying materials are made
+    available under the terms of the Eclipse Public License 2.0
+    which is available at https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+      Red Hat, Inc. - initial API and implementation
+
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="116" height="20" viewBox="0 0 116 20"
+     role="img" aria-label="Contribute with Red Hat Dev Spaces">
+  <title>Contribute with Red Hat Dev Spaces</title>
+  <clipPath id="ds-badge-clip">
+    <rect width="116" height="20" rx="4"/>
+  </clipPath>
+  <g clip-path="url(#ds-badge-clip)">
+    <rect width="30" height="20" fill="#151515"/>
+    <rect x="30" width="86" height="20" fill="#EE0000"/>
+  </g>
+  <!-- Dev Spaces mark -->
+  <g transform="translate(15 10) scale(0.108) translate(-120 -120)"
+     fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="9">
+    <circle cx="120" cy="120" r="65" stroke="#EE0000"/>
+    <rect x="78.75" y="90.75" width="83" height="59" rx="3" stroke="#FFFFFF"/>
+    <g stroke="#EE0000">
+      <path d="M108 106 92 120.5 108 135"/>
+      <path d="M124 105 116 136"/>
+      <path d="M133 106 149 120.5 133 135"/>
+    </g>
+  </g>
+  <text x="41.5" y="14" textLength="63" lengthAdjust="spacingAndGlyphs"
+        font-family="Verdana,DejaVu Sans,Geneva,sans-serif" font-size="11"
+        fill="#FFFFFF">Dev Spaces</text>
+</svg>
