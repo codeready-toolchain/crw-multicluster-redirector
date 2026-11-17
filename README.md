@@ -1,7 +1,7 @@
 [![Contribute](https://workspaces.openshift.com/devspaces-contribute.svg)](https://workspaces.openshift.com#https://github.com/codeready-toolchain/crw-multicluster-redirector/)
 [![Repository on Quay](https://quay.io/repository/redhat-developer/crw-multicluster-redirector/status "Docker Repository on Quay")](https://quay.io/repository/redhat-developer/crw-multicluster-redirector)
 
-# crw-multicluster-redirector project
+# crw-multicluster-redirector
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
